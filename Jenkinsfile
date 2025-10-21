@@ -10,22 +10,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo '🔧 Building project...'
-                bat 'dotnet build MyApp.sln'
+                echo "🔧 Building project..."
+                sh 'dotnet build'
             }
         }
 
         stage('Test') {
             steps {
                 echo '🧪 Running tests...'
-                bat 'dotnet test MyApp.sln'
+                sh 'dotnet test MyApp.sln'
             }
         }
 
         stage('Docker Build') {
             steps {
                 echo '🐳 Building Docker image...'
-                bat 'docker build -t myapp:latest .'
+                sh 'docker build -t myapp:latest .'
             }
         }
     }
